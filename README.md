@@ -1,24 +1,51 @@
 # README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options                   |
+| ------------------ | ------ | ------------------------- |
+| nickname           | string | null: false               | ニックネーム
+| email              | string | null: false, unique: true | メールアドレス
+| encrypted_password | string | null: false               | パスワード
+| last_name          | string | null: false               | 名前
+| first_name         | string | null: false               | 苗字
+| kana_last_name     | string | null: false               | カナ名前
+| kana_first_name    | string | null: false               | カナ苗字
+| birthday           | date   | null: false               | 誕生日
 
-* Ruby version
 
-* System dependencies
+### Association
 
-* Configuration
+- has_many :reviews
 
-* Database creation
 
-* Database initialization
+# テーブル設計
 
-* How to run the test suite
+## Locations テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| latitude           | decimal    | null: false                    | 緯度
+| longitude          | decimal    | null: false                    | 経度
+### Association
 
-* Deployment instructions
+- has_many :reviews
 
-* ...
+
+# テーブル設計
+
+## Reviews テーブル
+
+| Column       | Type         | Options                        |
+| ------------ | ------------ | ------------------------------ |
+| caption      | string       | null: false                    | 題名（見出し）
+| rating_id    | integer      | null: false                    | レビューの評価（⭐︎で１から５段階表示）
+| comment      | string       | null: false                    | ちょっとしたコメント
+| user         | references   | null: false, foreign_key: true | 外部キー
+| location     | references   | null: false, foreign_key: true | 外部キー
+
+### Association
+
+- belongs_to:location
+- belongs_to:user
