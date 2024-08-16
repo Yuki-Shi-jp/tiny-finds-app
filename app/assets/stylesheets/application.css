@@ -1,34 +1,15 @@
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
-.container {
-  display: flex;
-  height: 100vh;
-}
-#map {
-  flex: 2;
-  height: 100%;
-}
-.reviews {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
-  background-color: #eaeaea;
-}
-.review {
-  margin-bottom: 20px;
-  padding: 15px;
-  background: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-.review img {
-  max-width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-.review h2 {
-  margin-top: 0;
-}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
