@@ -1,0 +1,42 @@
+<%= render "shared/header" %>
+<div class="container">
+  <div id="map" style="height: 400px; width: 100%;"></div>
+    <div class="reviews">
+      <div class="review">
+        <%= image_tag 'review-image1.jpg' %>
+        <h2>レビュータイトル1</h2>
+        <p>この場所のレビュー内容がここに表示されます。たとえば、素晴らしいサービスや立地の良さなど。</p>
+      </div>
+      <div class="review">
+        <%= image_tag 'review-image2.jpg' %>
+          <h2>レビュータイトル2</h2>
+          <p>別のレビュー内容がここに表示されます。レビューは複数追加できます。</p>
+      </div>
+            <!-- 他のレビューもここに追加できます -->
+    </div>
+</div>
+<%= render "shared/footer" %>
+
+<script>
+  window.googleMapsApiKey = "<%= ENV['GOOGLE_MAPS_API_KEY'] %>";
+
+  document.addEventListener("DOMContentLoaded", function() {
+    const script = document.createElement('script');
+    script.src = "https://maps.googleapis.com/maps/api/js?key=" + window.googleMapsApiKey + "&libraries=places&callback=initMap";
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+  });
+
+  function initMap() {
+    var location = { lat: -34.397, lng: 150.644 };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: location
+    });
+    var marker = new google.maps.Marker({
+        position: location,
+        map: map
+    });
+  }
+</script>
