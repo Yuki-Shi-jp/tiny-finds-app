@@ -18,6 +18,7 @@
 ### Association
 
 - has_many :reviews
+- has_many :locations
 
 
 # テーブル設計
@@ -26,11 +27,14 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| latitude           | decimal    | null: false                    | 緯度
-| longitude          | decimal    | null: false                    | 経度
+| name               | decimal    | null: false                    | ポリゴンの名前
+| coordinates        | text       | null: false                    | 座標
+| user               | references | null: false, foreign_key: true | 外部キー
 ### Association
 
+- belongs_to:user
 - has_many :reviews
+- serialize :coordinates, JSON # coordinatesを配列として扱うためにserializeを使用
 
 
 # テーブル設計
@@ -49,3 +53,10 @@
 
 - belongs_to:location
 - belongs_to:user
+- has_many :photos, dependent: :destroy
+
+<!-- # models/photo.rb
+class Photo < ApplicationRecord
+  belongs_to :review
+  mount_uploader :image, ImageUploader # carrierwaveを使用して画像アップロード機能を実装
+end -->

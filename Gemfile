@@ -73,4 +73,7 @@ end
 
 
 gem 'devise'
+gem 'pg'
+gem 'gon'
+gem 'activerecord-postgis-adapter'
 
