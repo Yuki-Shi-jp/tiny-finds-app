@@ -34,7 +34,6 @@
 
 - belongs_to:user
 - has_many :reviews
-- serialize :coordinates, JSON # coordinatesを配列として扱うためにserializeを使用
 
 
 # テーブル設計
@@ -53,10 +52,4 @@
 
 - belongs_to:location
 - belongs_to:user
-- has_many :photos, dependent: :destroy
-
-<!-- # models/photo.rb
-class Photo < ApplicationRecord
-  belongs_to :review
-  mount_uploader :image, ImageUploader # carrierwaveを使用して画像アップロード機能を実装
-end -->
+- has_many :active_storage_attachments, as: :record, dependent: :destroy

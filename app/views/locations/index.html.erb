@@ -1,6 +1,29 @@
 <%= render "shared/header" %>
 <div class="container">
-  <div id="map"></div>
+<div id="map"></div>
+<script>
+  // Google Maps APIの読み込みが完了したら呼び出されるコールバック関数
+  function initMap() {
+    // 地図を表示する位置とズームレベルを指定
+    var mapOptions = {
+      center: { lat: 35.6895, lng: 139.6917 }, // 東京の緯度経度
+      zoom: 10
+    };
+
+    // 地図を表示する要素を取得
+    var mapElement = document.getElementById('map');
+
+    // Google Mapsオブジェクトを初期化
+    var map = new google.maps.Map(mapElement, mapOptions);
+
+    // マーカーの設定
+    var marker = new google.maps.Marker({
+      position: { lat: 35.6895, lng: 139.6917 },
+      map: map,
+      title: 'Tokyo!'
+    });
+  }
+</script>
     <div class="reviews">
       <div class="review">
         <%= image_tag 'review-image1.jpg' %>
@@ -16,27 +39,3 @@
     </div>
 </div>
 <%= render "shared/footer" %>
-
-<script>
-  window.googleMapsApiKey = "<%= ENV['GOOGLE_MAPS_API_KEY'] %>";
-
-  document.addEventListener("turbo:load", function() {
-    const script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?key=" + window.googleMapsApiKey + "&libraries=places&callback=initMap";
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-  });
-
-  function initMap() {
-    var location = { lat: 35.6895, lng: 139.6917 };
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: location
-    });
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
-  }
-</script>
