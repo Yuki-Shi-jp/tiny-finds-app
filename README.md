@@ -27,7 +27,7 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| name               | decimal    | null: false                    | ポリゴンの名前
+| name               | string     | null: false                    | ポリゴンの名前
 | coordinates        | text       | null: false                    | 座標
 | user               | references | null: false, foreign_key: true | 外部キー
 ### Association
