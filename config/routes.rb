@@ -4,7 +4,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get 'google_map', to: 'locations#index'
-
   root to: "locations#index"
 end
