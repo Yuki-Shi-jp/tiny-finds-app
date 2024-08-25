@@ -1,5 +1,4 @@
 default: &default
-  adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
@@ -8,14 +7,17 @@ default: &default
 
 development:
   <<: *default
+  adapter: mysql2
   database: tiny_finds_app_development
 
 test:
   <<: *default
+  adapter: mysql2
   database: tiny_finds_app_test
 
 production:
   <<: *default
+  adapter: postgresql
   database: tiny_finds_app_production
   username: tiny_finds_app
   password: <%= ENV["TINY_FINDS_APP_DATABASE_PASSWORD"] %>
