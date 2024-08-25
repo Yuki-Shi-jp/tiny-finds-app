@@ -1,23 +1,24 @@
 default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   adapter: mysql2
-  database: tiny_finds_app_development
+  username: root
+  password:
+  host: localhost
+  database: tiny-finds-app_development
 
 test:
   <<: *default
   adapter: mysql2
-  database: tiny_finds_app_test
+  username: root
+  password:
+  host: localhost
+  database: tiny-finds-app_test
 
 production:
   <<: *default
   adapter: postgresql
-  database: tiny_finds_app_production
-  username: tiny_finds_app
   url: <%= ENV['DATABASE_URL'] %>
