@@ -71,9 +71,11 @@ group :test do
   gem "webdrivers"
 end
 
+group :production do
+  gem 'pg'
+end
 
 gem 'devise'
-gem 'pg'
 gem 'gon'
 gem 'activerecord-postgis-adapter'
 gem 'geocoder'

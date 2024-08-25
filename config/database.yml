@@ -20,4 +20,4 @@ production:
   adapter: postgresql
   database: tiny_finds_app_production
   username: tiny_finds_app
-  password: <%= ENV["TINY_FINDS_APP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
